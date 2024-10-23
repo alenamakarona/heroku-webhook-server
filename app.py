@@ -1,9 +1,11 @@
-from flask import Flask, request, jsonify
+import requests
 
-app = Flask(__name__)
+TOKEN = 7996920370:AAHVQPRPwGMkLQLAuaJv7DuM18QSG2T6BCg
+WEBHOOK_URL = 'https://makarona-f5b217fb06ad.herokuapp.com/webhook'
 
-@app.route('/webhook', methods=['POST'])
-def webhook():
-    data = request.json
-    print(data)  # Для отладки, чтобы увидеть входящие данные
-    return jsonify({"status": "success"}), 200
+def set_webhook():
+    url = f'https://api.telegram.org/bot{TOKEN}/setWebhook?url={WEBHOOK_URL}'
+    response = requests.get(url)
+    return response.json()
+
+set_webhook()
