@@ -5,7 +5,7 @@ import requests
 app = Flask(__name__)
 
 # Укажите ваш токен бота Telegram
-TOKEN = os.environ.get('TELEGRAM_BOT_TOKEN')  # Убедитесь, что переменная окружения установлена
+TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN")  # Убедитесь, что переменная окружения установлена
 WEBHOOK_URL = f'https://makarona-f5b217fb06ad.herokuapp.com/webhook'
 
 # Установка вебхука
