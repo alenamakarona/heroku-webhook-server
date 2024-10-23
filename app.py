@@ -3,15 +3,12 @@ import os
 
 app = Flask(__name__)
 
-@app.route('/')
-def home():
-    return "Welcome to the webhook server!"  # Корневой маршрут
-
 @app.route('/webhook', methods=['POST'])
 def webhook():
     data = request.json
-    if data['transactionStatus'] == 'Approved':
-        return jsonify({'status': 'success'})
+    if data is not None and 'transactionStatus' in data:
+        if data['transactionStatus'] == 'Approved':
+            return jsonify({'status': 'success'})
     return jsonify({'status': 'error'})
 
 if __name__ == '__main__':
