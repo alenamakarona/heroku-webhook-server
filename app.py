@@ -3,6 +3,10 @@ import os
 
 app = Flask(__name__)
 
+@app.route('/')
+def home():
+    return "Welcome to the webhook server!"  # Корневой маршрут
+
 @app.route('/webhook', methods=['POST'])
 def webhook():
     data = request.json
